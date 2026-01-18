@@ -1,0 +1,38 @@
+﻿using DnaBrasilApi.Application.Common.Interfaces;
+using DnaBrasilApi.Domain.Entities;
+
+namespace DnaBrasilApi.Application.TipoLaudos.Commands.CreateTipoLaudos;
+public record CreateTipoLaudosCommand : IRequest<int>
+{
+    public required string Nome { get; init; }
+    public string? Descricao { get; init; }
+    public bool Status { get; init; } = true;
+    public required int IdadeMinima { get; init; }
+
+}
+
+public class CreateTipoLaudosCommandHandler : IRequestHandler<CreateTipoLaudosCommand, int>
+{
+    private readonly IApplicationDbContext _context;
+
+    public CreateTipoLaudosCommandHandler(IApplicationDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task<int> Handle(CreateTipoLaudosCommand request, CancellationToken cancellationToken)
+    {
+        var entity = new TipoLaudo
+        {
+            Nome = request.Nome,
+            Descricao = request.Descricao,
+            IdadeMinima = request.IdadeMinima
+        };
+
+        _context.TipoLaudos.Add(entity);
+
+        await _context.SaveChangesAsync(cancellationToken);
+
+        return entity.Id;
+    }
+}

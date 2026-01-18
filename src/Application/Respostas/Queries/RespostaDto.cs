@@ -1,0 +1,29 @@
+﻿using DnaBrasilApi.Domain.Entities;
+
+namespace DnaBrasilApi.Application.Respostas.Queries;
+
+public class RespostaDto
+{
+    public int Id { get; init; }
+    public int QuestionarioId { get; init; }
+    public required string Pergunta { get; init; }
+    public string? Descricao { get; init; }
+    public int TipoLaudoId { get; init; }
+    public required string NomeTipoLaudo { get; init; }
+    public required string RespostaQuestionario { get; init; }
+    public required decimal ValorPesoResposta { get; init; }
+
+
+    private class Mapping : Profile
+    {
+        public Mapping()
+        {
+            CreateMap<Resposta, RespostaDto>()
+                .ForMember(dest => dest.QuestionarioId, opt => opt.MapFrom(src => src.Questionario!.Id))
+                .ForMember(dest => dest.Pergunta, opt => opt.MapFrom(src =>
+                    $"{src.Questionario.Questao}. {src.Questionario.Pergunta}"))
+                .ForMember(dest => dest.TipoLaudoId, opt => opt.MapFrom(src => src.Questionario.TipoLaudo.Id))
+                .ForMember(dest => dest.NomeTipoLaudo, opt => opt.MapFrom(src => src.Questionario.TipoLaudo.Nome));
+        }
+    }
+}

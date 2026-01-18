@@ -1,0 +1,20 @@
+﻿using System.Security.Claims;
+
+using DnaBrasilApi.Application.Common.Interfaces;
+
+namespace DnaBrasilApi.Web.Services;
+
+public class CurrentUser : IUser
+{
+    private readonly IHttpContextAccessor _httpContextAccessor;
+
+    public CurrentUser(IHttpContextAccessor httpContextAccessor)
+    {
+        _httpContextAccessor = httpContextAccessor;
+    }
+
+    public string? Id => _httpContextAccessor.HttpContext?.User?.FindFirstValue(ClaimTypes.NameIdentifier);
+
+    public string? Perfil => _httpContextAccessor.HttpContext?.User?.Claims
+        .Where(c => c.Type == System.Security.Claims.ClaimTypes.Role).Select(c => c.Value).FirstOrDefault();
+}

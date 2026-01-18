@@ -1,0 +1,21 @@
+﻿namespace DnaBrasilApi.Domain.Enums;
+
+public static class UserRoles
+{
+    public const string Administrador = "Administrador";
+    public const string AdministradorConsulta = "AdministradorConsulta";
+    public const string AdministradorEad = "AdministradorEad";
+    public const string Aluno = "Aluno";
+    public const string Parceiro = "Parceiro";
+    public const string Profissional = "Profissional";
+    public const string Gestor = "Gestor Pedagógico";
+    public const string ProfessorEad = "ProfessorEad";
+    public const string CoordenadorEad = "CoordenadorEad";
+    public const string Coordenador = "Coordenador Pedagógico";
+    public const string CoordenadorGeral = "Coordenador Geral";
+    public const string EquipeMultidisciplinar = "Equipe Multidisciplinar";
+    public const string CoordenadorRegional = "Coordenador Regional";
+    public const string CoordenadorEscolar = "Coordenador Escolar";
+    public const string ProfessorEscolar = "Professor Escolar";
+    public const string Diretor = "Diretor";
+}

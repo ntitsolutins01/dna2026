@@ -1,0 +1,26 @@
+﻿using DnaBrasilApi.Application.Common.Interfaces;
+using DnaBrasilApi.Application.Common.Security;
+using DnaBrasilApi.Domain.Constants;
+
+namespace DnaBrasilApi.Application.TodoLists.Commands.PurgeTodoLists;
+
+[Authorize(Roles = Roles.Administrador)]
+[Authorize(Policy = Policies.CanPurge)]
+public record PurgeTodoListsCommand : IRequest;
+
+public class PurgeTodoListsCommandHandler : IRequestHandler<PurgeTodoListsCommand>
+{
+    private readonly IApplicationDbContext _context;
+
+    public PurgeTodoListsCommandHandler(IApplicationDbContext context)
+    {
+        _context = context;
+    }
+
+    public async Task Handle(PurgeTodoListsCommand request, CancellationToken cancellationToken)
+    {
+        _context.TodoLists.RemoveRange(_context.TodoLists);
+
+        await _context.SaveChangesAsync(cancellationToken);
+    }
+}

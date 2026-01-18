@@ -1,0 +1,7 @@
+﻿namespace DnaBrasilApi.Application.Common.Interfaces;
+
+public interface IUser
+{
+    string? Id { get; }
+    string? Perfil { get; }
+}
