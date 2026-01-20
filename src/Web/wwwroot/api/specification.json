@@ -8896,6 +8896,102 @@
         }
       }
     },
+    "/api/Mobiles/Aluno/{id}": {
+      "get": {
+        "tags": [
+          "Mobiles"
+        ],
+        "operationId": "GetAlunoMobileByIdQuery",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunoMobileDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Mobiles/Aluno/{id}/QrCode": {
+      "get": {
+        "tags": [
+          "Mobiles"
+        ],
+        "operationId": "GetAlunoQrCodeById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunoByteDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Mobiles/Aluno/{id}/Image": {
+      "get": {
+        "tags": [
+          "Mobiles"
+        ],
+        "operationId": "GetAlunoImageById",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/AlunoByteDto"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Modalidades": {
       "get": {
         "tags": [
@@ -22694,6 +22790,189 @@
           },
           "status": {
             "type": "boolean"
+          }
+        }
+      },
+      "AlunoMobileDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nome": {
+            "type": "string",
+            "nullable": true
+          },
+          "email": {
+            "type": "string",
+            "nullable": true
+          },
+          "sexo": {
+            "type": "string",
+            "nullable": true
+          },
+          "dtNascimento": {
+            "type": "string",
+            "nullable": true
+          },
+          "nomeMae": {
+            "type": "string",
+            "nullable": true
+          },
+          "nomePai": {
+            "type": "string",
+            "nullable": true
+          },
+          "cpf": {
+            "type": "string",
+            "nullable": true
+          },
+          "telefone": {
+            "type": "string",
+            "nullable": true
+          },
+          "celular": {
+            "type": "string",
+            "nullable": true
+          },
+          "cep": {
+            "type": "string",
+            "nullable": true
+          },
+          "endereco": {
+            "type": "string",
+            "nullable": true
+          },
+          "numero": {
+            "type": "string",
+            "nullable": true
+          },
+          "bairro": {
+            "type": "string",
+            "nullable": true
+          },
+          "url": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
+            "type": "boolean"
+          },
+          "habilitado": {
+            "type": "boolean"
+          },
+          "etnia": {
+            "type": "string",
+            "nullable": true
+          },
+          "idade": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nomeMunicipio": {
+            "type": "string",
+            "nullable": true
+          },
+          "nomeLocalidade": {
+            "type": "string",
+            "nullable": true
+          },
+          "municipioEstado": {
+            "type": "string",
+            "nullable": true
+          },
+          "controle": {
+            "type": "string",
+            "nullable": true
+          },
+          "estado": {
+            "type": "string",
+            "nullable": true
+          },
+          "nomeFoto": {
+            "type": "string",
+            "nullable": true
+          },
+          "modalidadeLinhaAcao": {
+            "type": "string",
+            "nullable": true
+          },
+          "linhaAcaoId": {
+            "type": "string",
+            "nullable": true
+          },
+          "fomentoId": {
+            "type": "string",
+            "nullable": true
+          },
+          "localidadeId": {
+            "type": "string",
+            "nullable": true
+          },
+          "deficienciaId": {
+            "type": "string",
+            "nullable": true
+          },
+          "profissionalId": {
+            "type": "string",
+            "nullable": true
+          },
+          "municipioId": {
+            "type": "string",
+            "nullable": true
+          },
+          "modalidadesIds": {
+            "type": "string",
+            "nullable": true
+          },
+          "modalidades": {
+            "type": "string",
+            "nullable": true
+          },
+          "serieTurma": {
+            "type": "string",
+            "nullable": true
+          },
+          "serieId": {
+            "type": "string",
+            "nullable": true
+          },
+          "etapaId": {
+            "type": "string",
+            "nullable": true
+          },
+          "serieNome": {
+            "type": "string",
+            "nullable": true
+          },
+          "laudos": {
+            "type": "array",
+            "nullable": true,
+            "items": {
+              "$ref": "#/components/schemas/LaudoOrdemDto"
+            }
+          }
+        }
+      },
+      "AlunoByteDto": {
+        "type": "object",
+        "additionalProperties": false,
+        "properties": {
+          "id": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "byteImage": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
+          },
+          "qrCode": {
+            "type": "string",
+            "format": "byte",
+            "nullable": true
           }
         }
       },

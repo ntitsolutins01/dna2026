@@ -19,6 +19,7 @@
 
   <ItemGroup>
     <Folder Include="Encaminhamentos\Commands\" />
+    <Folder Include="Mobiles\Commands\" />
   </ItemGroup>
 
 </Project>
