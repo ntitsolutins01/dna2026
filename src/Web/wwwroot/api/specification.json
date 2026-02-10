@@ -8992,6 +8992,58 @@
         }
       }
     },
+    "/api/Mobiles/Aluno/{id}/{tipoLaudoId}/{tipoLaudo}": {
+      "post": {
+        "tags": [
+          "Mobiles"
+        ],
+        "operationId": "PostTipoLaudoByAlunoId",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 1
+          },
+          {
+            "name": "tipoLaudoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 2
+          },
+          {
+            "name": "tipoLaudo",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "x-position": 3
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "boolean"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "/api/Modalidades": {
       "get": {
         "tags": [
